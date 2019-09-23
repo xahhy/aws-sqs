@@ -1,15 +1,24 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
+import emoji from 'node-emoji';
 import createMessagePrompt from './createMessagePrompt';
 import receiveMessagePrompt from './receiveMessagePrompt';
 import removeMessagePrompt from './removeMessagePrompt';
 
 export default async (sqs) => {
   const actionMap = {
-    [chalk.green.bold('Create A Message')]: async () => createMessagePrompt(sqs),
-    [chalk.yellow.bold('Poll Messages')]: async () => receiveMessagePrompt(sqs),
-    [chalk.red.bold('Remove A Message')]: async () => removeMessagePrompt(sqs),
-    [chalk.magenta.bold('Get Queue Attributes')]: async () => sqs.getQueueAttributes(),
+    [emoji.emojify(
+      `:star:  ${chalk.green.bold('Create A Message')}`,
+    )]: async () => createMessagePrompt(sqs),
+    [emoji.emojify(
+      `:airplane:  ${chalk.yellow.bold('Poll Messages')}`,
+    )]: async () => receiveMessagePrompt(sqs),
+    [emoji.emojify(
+      `:new_moon_with_face:  ${chalk.red.bold('Remove A Message')}`,
+    )]: async () => removeMessagePrompt(sqs),
+    [emoji.emojify(
+      `:rainbow:  ${chalk.magenta.bold('Get Queue Attributes')}`,
+    )]: async () => sqs.getQueueAttributes(),
   };
 
   const questions = [

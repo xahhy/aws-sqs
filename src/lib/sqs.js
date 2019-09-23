@@ -2,6 +2,7 @@ import AWS from 'aws-sdk';
 
 import prettyjson from 'prettyjson';
 import chalk from 'chalk';
+import emoji from 'node-emoji';
 import sendMessage from './sendMessage';
 import removeMessage from './removeMessage';
 import receiveMessage from './receiveMessage';
@@ -47,8 +48,17 @@ export default class SQS {
       async () => receiveMessage(this.sqs, this.QueueUrl)(param),
       (result) => {
         const { Messages } = result;
-        this.logger.log('Poll Messages Success:\n', prettyjson.render(Messages));
-        this.logger.log(chalk.green.bold(`Total Messages: ${Messages.length}`));
+        if (Messages) {
+          this.logger.log(
+            'Poll Messages Success:\n',
+            prettyjson.render(Messages),
+          );
+          this.logger.log(
+            emoji.emojify(`:white_check_mark:  ${chalk.green.bold(`Total Messages: ${Messages.length}`)}`),
+          );
+        } else {
+          this.logger.log(emoji.emojify(`:exclamation:  ${chalk.bold.red('Sorry. No message available')}`));
+        }
       },
     );
   }
