@@ -8,20 +8,8 @@ import removeMessage from './removeMessage';
 import receiveMessage from './receiveMessage';
 import getQueueAttributes from './getQueueAttributes';
 import getQueueUrl from './getQueueUrl';
+import { tryCatchHelper } from './utils';
 
-const tryCatchHelper = (logger) => async (callback, afterCallback) => {
-  let result;
-  try {
-    result = await callback();
-    if (typeof afterCallback === 'function') {
-      afterCallback(result);
-    }
-  } catch (error) {
-    logger.error(error);
-    result = error;
-  }
-  return result;
-};
 export default class SQS {
   constructor(QueueName, logger = console) {
     AWS.config.update({ region: 'ap-southeast-2' });

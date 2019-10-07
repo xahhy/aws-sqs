@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 import SQS from '../lib/sqs';
+import FIFOSQS from '../lib/fifoSqs';
 
 const initPrompt = async () => {
   const questions = [
@@ -11,9 +12,14 @@ const initPrompt = async () => {
     },
   ];
   const answer = await inquirer.prompt(questions);
+  const queueName = answer.QueueName;
   let sqs;
   try {
-    sqs = new SQS(answer.QueueName);
+    if (queueName.endsWith('fifo')) {
+      sqs = new FIFOSQS(queueName);
+    } else {
+      sqs = new SQS(queueName);
+    }
     await sqs.init();
     await sqs.getQueueAttributes();
   } catch (error) {
