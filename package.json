@@ -1,5 +1,5 @@
 {
-  "name": "sqs",
+  "name": "aws-sqs-cli",
   "version": "1.0.0",
   "description": "A CLI For AWS SQS Service Workshop",
   "main": "src/index.js",
@@ -16,13 +16,15 @@
   },
   "keywords": [
     "aws",
-    "sqs"
+    "sqs",
+    "tutorial"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "2.533.0",
     "chalk": "2.4.2",
+    "dotenv": "8.1.0",
     "esm": "3.2.25",
     "inquirer": "7.0.0",
     "node-emoji": "1.10.0",
