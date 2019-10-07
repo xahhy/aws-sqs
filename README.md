@@ -16,3 +16,10 @@ Run `npm link` to link current package to global package. Then run `aws-sqs-cli`
 
 1. Run `npm run dev`. Program is waiting for debugger to connect to `localhost:9229`
 2. Open your favorite debug tool to remote debug with `localhost:9229`
+
+## Publish
+
+Using GitHub Action to publish this `aws-sqs-cli` package. It's configured to automatic publish package with `v*` tag matches.
+
+- Update package version using `npm version v1.0.0`
+- `git push`
