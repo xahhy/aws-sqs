@@ -1,4 +1,7 @@
 import inquirer from 'inquirer';
+import prettyjson from 'prettyjson';
+import emoji from 'node-emoji';
+import chalk from 'chalk';
 // eslint-disable-next-line
 const validateNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
 
@@ -38,5 +41,17 @@ export default async (sqs) => {
     VisibilityTimeout: Number(answer.VisibilityTimeout),
     WaitTimeSeconds: Number(answer.WaitTimeSeconds),
   });
+  const { Messages } = result;
+  if (Messages) {
+    console.log(
+      'Poll Messages Success:\n',
+      prettyjson.render(Messages),
+    );
+    console.log(
+      emoji.emojify(`:white_check_mark:  ${chalk.green.bold(`Total Messages: ${Messages.length}`)}`),
+    );
+  } else {
+    console.log(emoji.emojify(`:exclamation:  ${chalk.bold.red('Sorry. No message available')}`));
+  }
   return result;
 };

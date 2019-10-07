@@ -8,6 +8,7 @@ const receiveMessage = (sqs, QueueUrl) => async ({
     VisibilityTimeout,
     WaitTimeSeconds,
     QueueUrl,
+    AttributeNames: ['All'],
   };
   return sqs.receiveMessage(params).promise();
 };

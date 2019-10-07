@@ -4,21 +4,25 @@ import emoji from 'node-emoji';
 import createMessagePrompt from './createMessagePrompt';
 import receiveMessagePrompt from './receiveMessagePrompt';
 import removeMessagePrompt from './removeMessagePrompt';
+import purgeQueuePrompt from './purgeQueuePrompt';
 
 export default async (sqs) => {
   const actionMap = {
     [emoji.emojify(
-      `:star:  ${chalk.green.bold('Create A Message')}`,
+      `:star:\t${chalk.green.bold('Create A Message')}`,
     )]: async () => createMessagePrompt(sqs),
     [emoji.emojify(
-      `:airplane:  ${chalk.yellow.bold('Poll Messages')}`,
+      `:airplane:\t${chalk.yellow.bold('Poll Messages')}`,
     )]: async () => receiveMessagePrompt(sqs),
     [emoji.emojify(
-      `:new_moon_with_face:  ${chalk.red.bold('Remove A Message')}`,
+      `:new_moon_with_face:\t${chalk.red.bold('Remove A Message')}`,
     )]: async () => removeMessagePrompt(sqs),
     [emoji.emojify(
-      `:rainbow:  ${chalk.magenta.bold('Get Queue Attributes')}`,
+      `:rainbow:\t${chalk.magenta.bold('Get Queue Attributes')}`,
     )]: async () => sqs.getQueueAttributes(),
+    [emoji.emojify(
+      `:x:\t${chalk.cyanBright.bold('Purge Queue')}`,
+    )]: async () => purgeQueuePrompt(sqs),
   };
 
   const questions = [
