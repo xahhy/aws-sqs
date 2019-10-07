@@ -4,9 +4,19 @@ This project is aimed at the beginner of using AWS SQS service.
 
 It's a pretty _command-line_ program to **send/receive/delete** SQS messages using javascript **aws-sdk**
 
+![menu.jpg](./src/assets/unicorn.jpg)
+
 ## Usage
 
 Clone this repo and run `npm start`
+
+Follow the command-line hint:
+
+- Type in your queue name
+- Select the action you want
+- Have fun!
+
+![menu.jpg](./src/assets/menu.jpg)
 
 ## Use Globally
 
