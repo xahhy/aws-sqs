@@ -10,7 +10,9 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start": "node src/index.js",
+    "dev": "node --inspect src/index.js"
   },
   "keywords": [
     "aws",
