@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node src/index.js",
-    "dev": "node --inspect src/index.js"
+    "dev": "node --inspect src/index.js",
+    "test": "echo No Test Yet"
   },
   "keywords": [
     "aws",
