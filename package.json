@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "start": "node src/index.js",
     "dev": "node --inspect src/index.js",
-    "test": "echo No Test Yet"
+    "test": "jest"
   },
   "keywords": [
     "aws",
@@ -34,9 +34,12 @@
     "terminal-image": "0.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "7.6.0",
     "eslint": "6.4.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-import": "2.18.2"
+    "eslint-plugin-import": "2.18.2",
+    "jest": "24.9.0",
+    "sinon": "7.5.0"
   }
 }
