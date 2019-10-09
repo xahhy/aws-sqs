@@ -1,28 +1,17 @@
 import inquirer from 'inquirer';
-import chalk from 'chalk';
-import emoji from 'node-emoji';
 import createMessagePrompt from './createMessagePrompt';
 import receiveMessagePrompt from './receiveMessagePrompt';
 import removeMessagePrompt from './removeMessagePrompt';
 import purgeQueuePrompt from './purgeQueuePrompt';
+import { ACTIONS } from '../constants';
 
 export default async (sqs) => {
   const actionMap = {
-    [emoji.emojify(
-      `:star:\t${chalk.green.bold('Create A Message')}`,
-    )]: async () => createMessagePrompt(sqs),
-    [emoji.emojify(
-      `:airplane:\t${chalk.yellow.bold('Poll Messages')}`,
-    )]: async () => receiveMessagePrompt(sqs),
-    [emoji.emojify(
-      `:new_moon_with_face:\t${chalk.red.bold('Remove A Message')}`,
-    )]: async () => removeMessagePrompt(sqs),
-    [emoji.emojify(
-      `:rainbow:\t${chalk.magenta.bold('Get Queue Attributes')}`,
-    )]: async () => sqs.getQueueAttributes(),
-    [emoji.emojify(
-      `:x:\t${chalk.cyanBright.bold('Purge Queue')}`,
-    )]: async () => purgeQueuePrompt(sqs),
+    [ACTIONS.CREATE_MESSAGE_ACTION]: async () => createMessagePrompt(sqs),
+    [ACTIONS.PULL_MESSAGE_ACTION]: async () => receiveMessagePrompt(sqs),
+    [ACTIONS.REMOVE_MESSAGE_ACTION]: async () => removeMessagePrompt(sqs),
+    [ACTIONS.GET_QUEUE_ATTRIBUTES_ACTION]: async () => sqs.getQueueAttributes(),
+    [ACTIONS.PURE_QUEUE_ACTION]: async () => purgeQueuePrompt(sqs),
   };
 
   const questions = [
