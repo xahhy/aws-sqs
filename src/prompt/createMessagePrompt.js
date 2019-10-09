@@ -18,7 +18,12 @@ export default async (sqs) => {
     },
   ];
   const answer = await inquirer.prompt(questions);
-  const result = await sqs.sendMessage(answer.message);
+  let result;
+  if (sqs.type === 'fifo') {
+    result = await sqs.sendMessage(answer.message, answer.MessageGroupId);
+  } else {
+    result = await sqs.sendMessage(answer.message);
+  }
   console.log(emoji.emojify(`:white_check_mark:  ${chalk.green('Message Send Successfully')}`));
   return result;
 };

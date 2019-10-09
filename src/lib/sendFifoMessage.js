@@ -1,4 +1,4 @@
-const sendFifoMessage = (sqs, QueueUrl, MessageGroupId) => async (message) => {
+const sendFifoMessage = (sqs, QueueUrl) => async (message, MessageGroupId) => {
   if (!MessageGroupId) {
     MessageGroupId = new Date().toISOString();
   }
