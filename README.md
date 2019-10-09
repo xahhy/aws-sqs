@@ -1,5 +1,8 @@
 # AWS SQS Tutorial
 
+[![Action Status](https://github.com/xahhy/aws-sqs-cli/workflows/Node.js%20Package/badge.svg)](https://github.com/xahhy/aws-sqs-cli/actions)
+[![npm version](https://badge.fury.io/js/aws-sqs-cli.svg)](https://badge.fury.io/js/aws-sqs-cli)
+
 This project is aimed at the beginner of using AWS SQS service.
 
 It's a pretty _command-line_ program to **send/receive/delete** SQS messages using javascript **aws-sdk**
