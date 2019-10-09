@@ -51,5 +51,8 @@
   },
   "repository": {
     "url": "https://github.com/xahhy/aws-sqs.git"
+  },
+  "engines": {
+    "node": ">=8.1.4"
   }
 }

@@ -1,7 +1,12 @@
 # AWS SQS Tutorial
 
 [![Action Status](https://github.com/xahhy/aws-sqs-cli/workflows/Node.js%20Package/badge.svg)](https://github.com/xahhy/aws-sqs-cli/actions)
-[![npm version](https://badge.fury.io/js/aws-sqs-cli.svg)](https://badge.fury.io/js/aws-sqs-cli)
+![npm](https://img.shields.io/npm/v/aws-sqs-cli)
+![npm](https://img.shields.io/npm/dw/aws-sqs-cli)
+![GitHub](https://img.shields.io/github/license/xahhy/aws-sqs-cli)
+![GitHub top language](https://img.shields.io/github/languages/top/xahhy/aws-sqs-cli)
+![GitHub repo size](https://img.shields.io/github/repo-size/xahhy/aws-sqs-cli)
+![GitHub last commit](https://img.shields.io/github/last-commit/xahhy/aws-sqs-cli)
 
 This project is aimed at the beginner of using AWS SQS service.
 
