@@ -16,7 +16,7 @@ export default class SQS {
     this.sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
     this.logger = logger;
     this.tryCatchHelper = tryCatchHelper(logger);
-    this.type = QueueName.endsWith('.fifo') ? 'fifo' : 'standard';
+    this.type = String(QueueName).endsWith('.fifo') ? 'fifo' : 'standard';
   }
 
   async init() {
