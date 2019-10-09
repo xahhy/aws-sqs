@@ -5,7 +5,7 @@ import createMessagePrompt from '../../src/prompt/createMessagePrompt';
 
 const sandbox = sinon.createSandbox();
 
-describe('purgeQueuePrompt', () => {
+describe('createMessagePrompt', () => {
   let mockConsole;
   beforeEach(() => {
     mockConsole = sandbox.stub(console, 'log');
@@ -16,29 +16,45 @@ describe('purgeQueuePrompt', () => {
   });
 
   describe('when sqs type is standard', () => {
-    it('should call sendMessage with message input', async () => {
+    let sqs;
+    let mockSqs;
+    beforeEach(() => {
       sandbox.stub(inquirer, 'prompt').resolves({ message: 'my sqs message' });
-      const sqs = new SQS('document');
-      const mockSqs = sinon.mock(sqs);
-      mockSqs.expects('sendMessage').withArgs('my sqs message');
+      sqs = new SQS('document');
+      mockSqs = sandbox.mock(sqs)
+        .expects('sendMessage')
+        .withArgs('my sqs message');
+    });
 
+    it('should call sendMessage with message input', async () => {
       await createMessagePrompt(sqs);
-
       mockSqs.verify();
+    });
+
+    it('should log: Message Send Successfully', async () => {
+      await createMessagePrompt(sqs);
       sinon.assert.calledWithMatch(mockConsole, 'Message Send Successfully');
     });
   });
 
   describe('when sqs type is fifo', () => {
-    it('should not call sqs.purgeQueue', async () => {
+    let sqs;
+    let mockSqs;
+    beforeEach(() => {
       sandbox.stub(inquirer, 'prompt').resolves({ message: 'my sqs message', MessageGroupId: 'groupId' });
-      const sqs = new SQS('document.fifo');
-      const mockSqs = sinon.mock(sqs);
-      mockSqs.expects('sendMessage').withArgs('my sqs message', 'groupId');
+      sqs = new SQS('document.fifo');
+      mockSqs = sinon.mock(sqs)
+        .expects('sendMessage')
+        .withArgs('my sqs message', 'groupId');
+    });
 
+    it('should not call sqs.purgeQueue', async () => {
       await createMessagePrompt(sqs);
-
       mockSqs.verify();
+    });
+
+    it('should log: Message Send Successfully', async () => {
+      await createMessagePrompt(sqs);
       sinon.assert.calledWithMatch(mockConsole, 'Message Send Successfully');
     });
   });
