@@ -7,8 +7,12 @@ const sandbox = sinon.createSandbox();
 
 describe('purgeQueuePrompt', () => {
   let mockConsole;
+  let mockSqs;
+  const sqs = new SQS();
+
   beforeEach(() => {
     mockConsole = sandbox.stub(console, 'log');
+    mockSqs = sandbox.stub(sqs, 'purgeQueue');
   });
 
   afterEach(() => {
@@ -18,13 +22,10 @@ describe('purgeQueuePrompt', () => {
   describe('when confirm purgeQueue yes', () => {
     it('should call sqs.purgeQueue', async () => {
       sandbox.stub(inquirer, 'prompt').resolves({ isPurgeQueue: true });
-      const sqs = new SQS();
-      const mockSqs = sinon.mock(sqs);
-      mockSqs.expects('purgeQueue').once();
 
       await purgeQueuePrompt(sqs);
 
-      mockSqs.verify();
+      sinon.assert.calledOnce(mockSqs);
       sinon.assert.calledWithMatch(mockConsole, 'Queue Purged In Progress');
     });
   });
@@ -32,13 +33,10 @@ describe('purgeQueuePrompt', () => {
   describe('when confirm purgeQueue no', () => {
     it('should not call sqs.purgeQueue', async () => {
       sandbox.stub(inquirer, 'prompt').resolves({ isPurgeQueue: false });
-      const sqs = new SQS();
-      const mockSqs = sinon.mock(sqs);
-      mockSqs.expects('purgeQueue').never();
 
       await purgeQueuePrompt(sqs);
 
-      mockSqs.verify();
+      sinon.assert.notCalled(mockSqs);
       sinon.assert.notCalled(mockConsole);
     });
   });

@@ -21,14 +21,12 @@ describe('createMessagePrompt', () => {
     beforeEach(() => {
       sandbox.stub(inquirer, 'prompt').resolves({ message: 'my sqs message' });
       sqs = new SQS('document');
-      mockSqs = sandbox.mock(sqs)
-        .expects('sendMessage')
-        .withArgs('my sqs message');
+      mockSqs = sandbox.stub(sqs, 'sendMessage');
     });
 
     it('should call sendMessage with message input', async () => {
       await createMessagePrompt(sqs);
-      mockSqs.verify();
+      sinon.assert.calledWith(mockSqs, 'my sqs message');
     });
 
     it('should log: Message Send Successfully', async () => {
@@ -43,14 +41,12 @@ describe('createMessagePrompt', () => {
     beforeEach(() => {
       sandbox.stub(inquirer, 'prompt').resolves({ message: 'my sqs message', MessageGroupId: 'groupId' });
       sqs = new SQS('document.fifo');
-      mockSqs = sinon.mock(sqs)
-        .expects('sendMessage')
-        .withArgs('my sqs message', 'groupId');
+      mockSqs = sinon.stub(sqs, 'sendMessage');
     });
 
     it('should not call sqs.purgeQueue', async () => {
       await createMessagePrompt(sqs);
-      mockSqs.verify();
+      sinon.assert.calledWith(mockSqs, 'my sqs message', 'groupId');
     });
 
     it('should log: Message Send Successfully', async () => {

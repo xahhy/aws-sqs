@@ -7,7 +7,9 @@ const sandbox = sinon.createSandbox();
 
 describe('receiveMessagePrompt', () => {
   let mockConsole;
+  let sqs;
   beforeEach(() => {
+    sqs = new SQS('document');
     mockConsole = sandbox.stub(console, 'log');
   });
 
@@ -16,12 +18,10 @@ describe('receiveMessagePrompt', () => {
   });
 
   describe('when pull 1 message', () => {
-    let sqs;
     let mockSqs;
     beforeEach(() => {
       sandbox.stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
-      sqs = new SQS('document');
       mockSqs = sandbox.stub(sqs, 'receiveMessage').resolves({ Messages: ['message1'] });
     });
 
@@ -42,11 +42,9 @@ describe('receiveMessagePrompt', () => {
   });
 
   describe('when pull 2 messages', () => {
-    let sqs;
     beforeEach(() => {
       sandbox.stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
-      sqs = new SQS('document');
       sandbox.stub(sqs, 'receiveMessage').resolves({ Messages: ['message1', 'message2'] });
     });
 
@@ -57,11 +55,9 @@ describe('receiveMessagePrompt', () => {
   });
 
   describe('when no message pulled', () => {
-    let sqs;
     beforeEach(() => {
       sandbox.stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
-      sqs = new SQS('document');
       sandbox.stub(sqs, 'receiveMessage').resolves({});
     });
 
