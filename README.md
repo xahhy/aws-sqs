@@ -7,6 +7,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/xahhy/aws-sqs-cli)
 ![GitHub repo size](https://img.shields.io/github/repo-size/xahhy/aws-sqs-cli)
 ![GitHub last commit](https://img.shields.io/github/last-commit/xahhy/aws-sqs-cli)
+![node](https://img.shields.io/node/v/aws-sqs-cli)
 
 This project is aimed at the beginner of using AWS SQS service.
 
