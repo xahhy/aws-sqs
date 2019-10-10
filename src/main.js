@@ -6,11 +6,7 @@ import initPrompt from './prompt/initPrompt';
 import loopPrompt from './prompt/loopPrompt';
 
 const main = async () => {
-  const imagePath = path.join(
-    // eslint-disable-next-line
-    path.dirname(new URL(import.meta.url).pathname),
-    './assets/unicorn.jpg',
-  );
+  const imagePath = path.join(__dirname, './assets/unicorn.jpg');
   console.log(await terminalImage.file(imagePath));
   const sqs = await initPrompt();
   // eslint-disable-next-line no-constant-condition
