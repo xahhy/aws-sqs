@@ -1,0 +1,24 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-restricted-globals": "off",
+    "max-classes-per-file": "off",
+    "max-len": "off",
+    "class-methods-use-this": "off"
+  },
+  "parser": "babel-eslint"
+}
