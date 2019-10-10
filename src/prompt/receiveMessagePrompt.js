@@ -2,8 +2,7 @@ import inquirer from 'inquirer';
 import prettyjson from 'prettyjson';
 import emoji from 'node-emoji';
 import chalk from 'chalk';
-// eslint-disable-next-line
-const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
+import { validateNumber } from '../utils';
 
 export default async sqs => {
   const DEFAULT_MAX_NUMBER_OF_MESSAGES = 1;
