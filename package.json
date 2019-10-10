@@ -1,6 +1,6 @@
 {
   "name": "aws-sqs-cli",
-  "version": "1.0.2-rc4",
+  "version": "1.0.2-rc5",
   "description": "A CLI For AWS SQS Service Workshop",
   "main": "src/index.js",
   "bin": {
