@@ -1,5 +1,6 @@
 const sendFifoMessage = (sqs, QueueUrl) => async (message, MessageGroupId) => {
   if (!MessageGroupId) {
+    // eslint-disable-next-line
     MessageGroupId = new Date().toISOString();
   }
   const params = {

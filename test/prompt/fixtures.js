@@ -14,13 +14,11 @@ class MockSQS extends SQS {
 }
 
 class MockSQSThrowError extends SQS {
-  init() { throw Error('init error'); }
+  init() {
+    throw Error('init error');
+  }
 
   getQueueAttributes() {}
 }
 
-export {
-  MockFIFOSQS,
-  MockSQS,
-  MockSQSThrowError,
-};
+export { MockFIFOSQS, MockSQS, MockSQSThrowError };

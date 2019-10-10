@@ -7,7 +7,5 @@ global.Date = class MockDate extends Date {
   }
 };
 
-export {
-  mockDate,
-};
-
+// eslint-disable-next-line
+export { mockDate };

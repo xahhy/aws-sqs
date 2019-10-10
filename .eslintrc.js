@@ -17,8 +17,10 @@ module.exports = {
     'no-restricted-globals': 0,
     'max-classes-per-file': 0,
     'max-len': 0,
+    'class-methods-use-this': 0,
   },
   env: {
     jest: true,
   },
+  parser: 'babel-eslint',
 };

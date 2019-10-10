@@ -10,7 +10,9 @@ const sandbox = sinon.createSandbox();
 describe('initPrompt', () => {
   describe('when sqs init successfully', () => {
     beforeEach(() => {
-      sandbox.stub(FIFOSQS, 'default').callsFake((args) => new MockFIFOSQS(args));
+      sandbox
+        .stub(FIFOSQS, 'default')
+        .callsFake((args) => new MockFIFOSQS(args));
       sandbox.stub(SQS, 'default').callsFake((args) => new MockSQS(args));
     });
 
@@ -20,7 +22,9 @@ describe('initPrompt', () => {
 
     describe('when QueueName is document.fifo which ends with .fifo', () => {
       it('should return fifo queue instance', async () => {
-        sandbox.stub(inquirer, 'prompt').resolves({ QueueName: 'document.fifo' });
+        sandbox
+          .stub(inquirer, 'prompt')
+          .resolves({ QueueName: 'document.fifo' });
         const result = await initPrompt();
         expect(result.type).toBe('fifo');
       });
@@ -28,7 +32,9 @@ describe('initPrompt', () => {
 
     describe('when QueueName is documentfifo which is not ends with .fifo', () => {
       it('should return standard queue instance', async () => {
-        sandbox.stub(inquirer, 'prompt').resolves({ QueueName: 'documentfifo' });
+        sandbox
+          .stub(inquirer, 'prompt')
+          .resolves({ QueueName: 'documentfifo' });
         const result = await initPrompt();
         expect(result.type).toBe('standard');
       });
@@ -42,12 +48,13 @@ describe('initPrompt', () => {
       });
     });
   });
-  
+
   describe('when error happens during sqs init', () => {
     let mockSqs;
     let mockConsole;
     beforeEach(() => {
-      mockSqs = sandbox.stub(SQS, 'default')
+      mockSqs = sandbox
+        .stub(SQS, 'default')
         .onCall(0)
         .callsFake((args) => new MockSQSThrowError(args))
         .callsFake((args) => new MockSQS(args));
@@ -70,7 +77,9 @@ describe('initPrompt', () => {
       await initPrompt();
       sinon.assert.calledWith(
         mockConsole,
-        sinon.match.instanceOf(Error).and(sinon.match.has('message', 'init error')),
+        sinon.match
+          .instanceOf(Error)
+          .and(sinon.match.has('message', 'init error')),
       );
     });
   });

@@ -18,12 +18,11 @@ describe('loopPrompt', () => {
   let mockPurgeQueuePrompt;
   let mockGetQueueAttributesPrompt;
   let mockConsole;
-  let mockSqs;
   const sqs = new SQS();
 
   beforeEach(() => {
     mockConsole = sandbox.stub(console, 'error');
-    mockSqs = sandbox.stub(sqs, 'getQueueAttributes');
+    sandbox.stub(sqs, 'getQueueAttributes');
     mockCreateMessagePrompt = sandbox.stub(createMessagePrompt, 'default');
     mockReceiveMessagePrompt = sandbox.stub(receiveMessagePrompt, 'default');
     mockRemoveMessagePrompt = sandbox.stub(removeMessagePrompt, 'default');

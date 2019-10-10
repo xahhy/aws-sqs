@@ -11,7 +11,5 @@ const tryCatchHelper = (logger) => async (callback, afterCallback) => {
   }
   return result;
 };
-
-export {
-  tryCatchHelper,
-};
+// eslint-disable-next-line
+export { tryCatchHelper };
