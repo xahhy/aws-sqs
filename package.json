@@ -15,18 +15,16 @@
     "start": "node src/index.js",
     "dev": "node --inspect src/index.js",
     "test": "jest",
-    "coverage": "jest --coverage",
-    "prettier": "prettier --write src/**"
+    "coverage": "jest --coverage"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier && npm run test",
+      "pre-commit": "npm run lint:fix && npm run test",
       "pre-push": "npm run lint && npm run test"
     }
   },
   "lint-staged": {
     "**/*.js": [
-      "npm run prettier",
       "npm run lint:fix",
       "git add"
     ]
@@ -55,7 +53,9 @@
     "eslint": "6.4.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-google": "0.14.0",
+    "eslint-config-prettier": "6.4.0",
     "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-prettier": "3.1.1",
     "husky": "3.0.8",
     "jest": "24.9.0",
     "lint-staged": "9.4.2",

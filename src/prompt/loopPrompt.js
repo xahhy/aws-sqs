@@ -6,7 +6,7 @@ import purgeQueuePrompt from './purgeQueuePrompt';
 import getQueueAttributesPrompt from './getQueueAttributesPrompt';
 import { ACTIONS } from '../constants';
 
-export default async (sqs) => {
+export default async sqs => {
   const actionMap = {
     [ACTIONS.CREATE_MESSAGE_ACTION]: async () => createMessagePrompt(sqs),
     [ACTIONS.PULL_MESSAGE_ACTION]: async () => receiveMessagePrompt(sqs),
@@ -20,11 +20,7 @@ export default async (sqs) => {
       type: 'list',
       name: 'action',
       message: 'What do you want to do?',
-      choices: [
-        new inquirer.Separator(),
-        ...Object.keys(actionMap),
-        new inquirer.Separator(),
-      ],
+      choices: [new inquirer.Separator(), ...Object.keys(actionMap), new inquirer.Separator()],
     },
   ];
 

@@ -10,7 +10,7 @@ describe('getQueueAttributes', () => {
   let mockSqs;
   beforeEach(() => {
     mockSqs = sandbox.stub(sqs, 'getQueueAttributes').returns({
-      promise: () => ({ }),
+      promise: () => ({}),
     });
   });
 

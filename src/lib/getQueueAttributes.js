@@ -1,4 +1,3 @@
-
 const getQueueAttributes = (sqs, QueueUrl) => async () => {
   const params = {
     QueueUrl,
