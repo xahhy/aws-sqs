@@ -19,3 +19,5 @@ jobs:
       - run: npm ci
       - run: npm audit
       - run: npm test
+      - run: npm install -g codecov
+      - run: codecov -t ${{secrets.codecov_token}}
