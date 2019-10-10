@@ -10,7 +10,7 @@ describe('purgeQueue', () => {
   let mockSqs;
   beforeEach(() => {
     mockSqs = sandbox.stub(sqs, 'purgeQueue').returns({
-      promise: () => ({ }),
+      promise: () => ({}),
     });
   });
 

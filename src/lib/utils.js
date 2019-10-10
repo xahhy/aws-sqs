@@ -1,4 +1,4 @@
-const tryCatchHelper = (logger) => async (callback, afterCallback) => {
+const tryCatchHelper = logger => async (callback, afterCallback) => {
   let result;
   try {
     result = await callback();

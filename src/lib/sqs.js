@@ -42,7 +42,7 @@ export default class SQS {
   async getQueueAttributes() {
     return this.tryCatchHelper(
       async () => getQueueAttributes(this.sqs, this.QueueUrl)(),
-      (result) => {
+      result => {
         const { Attributes } = result;
         this.logger.log('Queue Attributes:\n', prettyjson.render(Attributes));
       },

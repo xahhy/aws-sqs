@@ -20,14 +20,19 @@ describe('receiveMessagePrompt', () => {
   describe('when pull 1 message', () => {
     let mockSqs;
     beforeEach(() => {
-      sandbox.stub(inquirer, 'prompt')
+      sandbox
+        .stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
       mockSqs = sandbox.stub(sqs, 'receiveMessage').resolves({ Messages: ['message1'] });
     });
 
     it('should call receiveMessage', async () => {
       await receiveMessagePrompt(sqs);
-      sinon.assert.calledWith(mockSqs, { MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
+      sinon.assert.calledWith(mockSqs, {
+        MaxNumberOfMessages: 1,
+        VisibilityTimeout: 10,
+        WaitTimeSeconds: 10,
+      });
     });
 
     it('should log: Poll Messages Success', async () => {
@@ -43,7 +48,8 @@ describe('receiveMessagePrompt', () => {
 
   describe('when pull 2 messages', () => {
     beforeEach(() => {
-      sandbox.stub(inquirer, 'prompt')
+      sandbox
+        .stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
       sandbox.stub(sqs, 'receiveMessage').resolves({ Messages: ['message1', 'message2'] });
     });
@@ -56,7 +62,8 @@ describe('receiveMessagePrompt', () => {
 
   describe('when no message pulled', () => {
     beforeEach(() => {
-      sandbox.stub(inquirer, 'prompt')
+      sandbox
+        .stub(inquirer, 'prompt')
         .resolves({ MaxNumberOfMessages: 1, VisibilityTimeout: 10, WaitTimeSeconds: 10 });
       sandbox.stub(sqs, 'receiveMessage').resolves({});
     });

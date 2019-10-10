@@ -1,4 +1,4 @@
-const getQueueUrl = (sqs) => async (QueueName) => {
+const getQueueUrl = sqs => async QueueName => {
   const params = {
     QueueName,
   };

@@ -4,7 +4,8 @@
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -18,7 +19,8 @@
     "no-restricted-globals": "off",
     "max-classes-per-file": "off",
     "max-len": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "prettier/prettier": "error"
   },
   "parser": "babel-eslint"
 }

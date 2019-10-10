@@ -1,4 +1,4 @@
-const sendMessage = (sqs, QueueUrl) => async (message) => {
+const sendMessage = (sqs, QueueUrl) => async message => {
   const params = {
     MessageBody: JSON.stringify(message),
     QueueUrl,

@@ -39,7 +39,9 @@ describe('createMessagePrompt', () => {
     let sqs;
     let mockSqs;
     beforeEach(() => {
-      sandbox.stub(inquirer, 'prompt').resolves({ message: 'my sqs message', MessageGroupId: 'groupId' });
+      sandbox
+        .stub(inquirer, 'prompt')
+        .resolves({ message: 'my sqs message', MessageGroupId: 'groupId' });
       sqs = new SQS('document.fifo');
       mockSqs = sinon.stub(sqs, 'sendMessage');
     });

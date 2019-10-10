@@ -10,7 +10,7 @@ describe('receiveMessage', () => {
   let mockSqs;
   beforeEach(() => {
     mockSqs = sandbox.stub(sqs, 'receiveMessage').returns({
-      promise: () => ({ }),
+      promise: () => ({}),
     });
   });
 
