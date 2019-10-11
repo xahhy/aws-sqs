@@ -22,13 +22,27 @@ describe('sendMessage', () => {
     expect(typeof sendMessage(sqs, QueueUrl)).toBe('function');
   });
 
-  it('should call sqs.sendMessage with correct parameters', async () => {
-    const message = 'message';
-    const expectedParams = {
-      MessageBody: JSON.stringify(message),
-      QueueUrl,
-    };
-    await sendMessage(sqs, QueueUrl)(message);
-    sinon.assert.calledWith(mockSqs, expectedParams);
+  describe('when message is a string', () => {
+    it('should call sqs.sendMessage with string message', async () => {
+      const message = 'message';
+      const expectedParams = {
+        MessageBody: 'message',
+        QueueUrl,
+      };
+      await sendMessage(sqs, QueueUrl)(message);
+      sinon.assert.calledWith(mockSqs, expectedParams);
+    });
+  });
+
+  describe('when message is a object', () => {
+    it('should call sqs.sendMessage with stringified message', async () => {
+      const message = { message: 'my sqs message' };
+      const expectedParams = {
+        MessageBody: '{"message":"my sqs message"}',
+        QueueUrl,
+      };
+      await sendMessage(sqs, QueueUrl)(message);
+      sinon.assert.calledWith(mockSqs, expectedParams);
+    });
   });
 });

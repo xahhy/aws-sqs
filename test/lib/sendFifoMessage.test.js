@@ -28,7 +28,7 @@ describe('sendFifoMessage', () => {
       const message = 'message';
       const MessageGroupId = 'message group id';
       const expectedParams = {
-        MessageBody: JSON.stringify(message),
+        MessageBody: message,
         QueueUrl,
         MessageGroupId,
       };
@@ -41,7 +41,7 @@ describe('sendFifoMessage', () => {
     it('should call sqs.sendMessage with default MessageGroupId as current timestamp', async () => {
       const message = 'message';
       const expectedParams = {
-        MessageBody: JSON.stringify(message),
+        MessageBody: message,
         QueueUrl,
         MessageGroupId: mockDate.toISOString(),
       };

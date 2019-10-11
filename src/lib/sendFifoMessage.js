@@ -4,7 +4,7 @@ const sendFifoMessage = (sqs, QueueUrl) => async (message, MessageGroupId) => {
     MessageGroupId = new Date().toISOString();
   }
   const params = {
-    MessageBody: JSON.stringify(message),
+    MessageBody: typeof message === 'string' ? message : JSON.stringify(message),
     QueueUrl,
     MessageGroupId,
   };
