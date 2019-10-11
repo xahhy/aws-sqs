@@ -20,12 +20,21 @@ export default async sqs => {
       type: 'list',
       name: 'action',
       message: 'What do you want to do?',
-      choices: [new inquirer.Separator(), ...Object.keys(actionMap), new inquirer.Separator()],
+      choices: [
+        new inquirer.Separator(),
+        ...Object.keys(actionMap),
+        new inquirer.Separator(),
+        ACTIONS.QUIT,
+      ],
     },
   ];
 
   const answer = await inquirer.prompt(questions);
   const action = actionMap[answer.action];
+  if (!action) {
+    global.EventBus.emit('quit');
+    return 'quit';
+  }
   try {
     await action();
   } catch (error) {

@@ -1,6 +1,6 @@
 const sendMessage = (sqs, QueueUrl) => async message => {
   const params = {
-    MessageBody: JSON.stringify(message),
+    MessageBody: typeof message === 'string' ? message : JSON.stringify(message),
     QueueUrl,
   };
   return sqs.sendMessage(params).promise();

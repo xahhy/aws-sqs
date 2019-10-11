@@ -11,6 +11,7 @@ const ACTIONS = {
     `:rainbow:\t${chalk.magenta.bold('Get Queue Attributes')}`,
   ),
   PURE_QUEUE_ACTION: emoji.emojify(`:x:\t${chalk.cyanBright.bold('Purge Queue')}`),
+  QUIT: emoji.emojify(`:black_square_for_stop:\t${chalk.bold('Quit')}`),
 };
 // eslint-disable-next-line
 export { ACTIONS };
