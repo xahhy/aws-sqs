@@ -1,7 +1,7 @@
 # AWS SQS Tutorial
 
 [![Action Status](https://github.com/xahhy/aws-sqs-cli/workflows/Node.js%20Test/badge.svg)](https://github.com/xahhy/aws-sqs-cli/actions)
-![npm](https://img.shields.io/npm/v/aws-sqs-cli)
+![npm](https://www.npmjs.com/package/aws-sqs-cli)
 ![npm](https://img.shields.io/npm/dw/aws-sqs-cli)
 ![GitHub](https://img.shields.io/github/license/xahhy/aws-sqs-cli)
 ![GitHub top language](https://img.shields.io/github/languages/top/xahhy/aws-sqs-cli)
