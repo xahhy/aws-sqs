@@ -49,4 +49,17 @@ describe('sendFifoMessage', () => {
       sinon.assert.calledWith(mockSqs, expectedParams);
     });
   });
+
+  describe('when message is an object and MessageGroupId not passed', () => {
+    it('should call sqs.sendMessage with default MessageGroupId as current timestamp and stringified message', async () => {
+      const message = { message: 'my sqs message' };
+      const expectedParams = {
+        MessageBody: '{"message":"my sqs message"}',
+        QueueUrl,
+        MessageGroupId: mockDate.toISOString(),
+      };
+      await sendFifoMessage(sqs, QueueUrl)(message);
+      sinon.assert.calledWith(mockSqs, expectedParams);
+    });
+  });
 });
