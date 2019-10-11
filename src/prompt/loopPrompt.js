@@ -11,7 +11,7 @@ export default async sqs => {
     [ACTIONS.CREATE_MESSAGE_ACTION]: async () => createMessagePrompt(sqs),
     [ACTIONS.PULL_MESSAGE_ACTION]: async () => receiveMessagePrompt(sqs),
     [ACTIONS.REMOVE_MESSAGE_ACTION]: async () => removeMessagePrompt(sqs),
-    [ACTIONS.GET_QUEUE_ATTRIBUTES_ACTION]: async () => getQueueAttributesPrompt(),
+    [ACTIONS.GET_QUEUE_ATTRIBUTES_ACTION]: async () => getQueueAttributesPrompt(sqs),
     [ACTIONS.PURE_QUEUE_ACTION]: async () => purgeQueuePrompt(sqs),
   };
 
