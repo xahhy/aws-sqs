@@ -9,7 +9,6 @@ import purgeQueue from './purgeQueue';
 
 export default class SQS {
   constructor(QueueName, logger = console) {
-    AWS.config.update({ region: 'ap-southeast-2' });
     this.QueueName = QueueName;
     this.sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
     this.logger = logger;
