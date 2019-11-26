@@ -13,7 +13,7 @@ export default async sqs => {
       type: 'input',
       name: 'MaxNumberOfMessages',
       message:
-        "What's the maximum number of messages you want to return? (MaxNumberOfMessages) seconds",
+        "What's the maximum number of messages you want to return? (MaxNumberOfMessages)",
       default: DEFAULT_MAX_NUMBER_OF_MESSAGES,
       validate: validateNumber,
     },
