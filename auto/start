@@ -1,0 +1,8 @@
+#!/bin/bash -eux
+
+cd "$(dirname "$0")"/..
+
+IMAGE_NAME=aws-sqs
+
+docker build -t ${IMAGE_NAME} .
+docker run --rm -it -e "TERM=xterm-256color" --env-file .env ${IMAGE_NAME}

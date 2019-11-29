@@ -17,7 +17,9 @@ It's a pretty _command-line_ program to **send/receive/delete** SQS messages usi
 
 ## Usage
 
-Clone this repo and run `npm start`
+- Clone this repo
+- Fill in your own AWS credentials in `.env.example` and rename it to `.env`
+- Run `npm start`
 
 Follow the command-line hint:
 
