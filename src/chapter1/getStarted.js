@@ -2,7 +2,7 @@ import marked from 'marked';
 import fs from 'fs';
 import path from 'path';
 
-const readDocumentAsString = fileName =>
+const readDocumentAsString = (fileName) =>
   fs.readFileSync(path.join(__dirname, '../documents', fileName)).toString();
 
 const getStarted = () => {

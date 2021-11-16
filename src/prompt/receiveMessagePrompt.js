@@ -4,7 +4,7 @@ import emoji from 'node-emoji';
 import chalk from 'chalk';
 import { validateNumber } from '../utils';
 
-export default async sqs => {
+export default async (sqs) => {
   const DEFAULT_MAX_NUMBER_OF_MESSAGES = 1;
   const DEFAULT_WAIT_TIME_SECONDS = 10;
   const DEFAULT_VISIBILITY_TIMEOUT = 2;
