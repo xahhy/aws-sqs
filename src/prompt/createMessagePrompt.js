@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import emoji from 'node-emoji';
 import chalk from 'chalk';
 
-export default async sqs => {
+export default async (sqs) => {
   const questions = [
     {
       type: 'input',
