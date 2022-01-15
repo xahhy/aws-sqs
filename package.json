@@ -41,7 +41,7 @@
     "dotenv": "8.1.0",
     "esm": "3.2.25",
     "inquirer": "7.0.0",
-    "marked": "0.7.0",
+    "marked": "4.0.10",
     "marked-terminal": "3.3.0",
     "node-emoji": "1.10.0",
     "prettyjson": "1.2.1",
