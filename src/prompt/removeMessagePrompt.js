@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-export default async sqs => {
+export default async (sqs) => {
   const questions = [
     {
       type: 'input',

@@ -1,4 +1,4 @@
-const removeMessage = (sqs, sqsQueueURl) => async message =>
+const removeMessage = (sqs, sqsQueueURl) => async (message) =>
   sqs
     .deleteMessage({
       QueueUrl: sqsQueueURl,
